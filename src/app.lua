@@ -249,7 +249,7 @@ while run do
       _, lastErr = stargate.dial(addressFld.address)
       t = thread.create(function()
           thread.current():suspend()
-          print(tonumber(autocloseFld.address))
+          print(autocloseFld.address)
           os.sleep(tonumber(autocloseFld.address))
           print("disconnect")
           if (gateState == "Connected" and direction == "Outgoing") or gateState == "Dialling" then
