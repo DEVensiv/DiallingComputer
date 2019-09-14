@@ -115,7 +115,7 @@ updateTerminateBtn()
 
 -- autoclose field
 local autocloseFld = AddressField.new(4, 39, 34, 5, "10", CYAN, TEXT_WHITE, BACKGROUND)
-gpu.set(17-9, 38, "AUTOCLOSE SECONDS")
+gpu.set(17-4, 38, "AUTOCLOSE SECONDS")
 autocloseFld:draw()
 
 -- configuration button
