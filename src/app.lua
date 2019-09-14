@@ -249,12 +249,12 @@ while run do
       _, lastErr = stargate.dial(addressFld.address)
       t = thread.create(function()
           thread.current():suspend()
-          print(autocloseFld.raw)
+          
           os.sleep(tonumber(autocloseFld.raw))
           -- terminate connection
-          print("disconnecting")
+          
           stargate.disconnect()
-          print("disconnected")
+          
           -- clear chevrons (closing state is skipped when terminating during dial)
           for i = 1, 9 do
             graphics.drawChevron(i, " ", BACKGROUND)
