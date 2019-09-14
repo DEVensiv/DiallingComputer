@@ -128,6 +128,7 @@ local idcField = IDCField.new(61, 14, 40, 22, "VALID IDCS", CYAN, TEXT_WHITE, BA
 local prevState = "Idle"
 local lastErr = nil
 local run = true
+local t = nil
 while run do
   -- update gate and iris state
   local gateState, engaged, direction = stargate.stargateState()
@@ -151,6 +152,11 @@ while run do
     end
   
   elseif gateState == "Connected" then
+    if t ~= nil then
+      t:resume()
+      print("thread resumed")
+    end
+    
     if irisState == "Closed" then
       -- wormhole is connected, but iris is closed
       graphics.drawIris()
@@ -242,7 +248,8 @@ while run do
     dialBtn:setBackground(CYAN_LIGHT)
     if string.len(addressFld.address) >= 7 then
       _, lastErr = stargate.dial(addressFld.address)
-      thread.create(function(time)
+      t = thread.create(function(time)
+          thread.current():suspend()
           os.sleep(time)
           if (gateState == "Connected" and direction == "Outgoing") or gateState == "Dialling" then
             -- terminate connection
