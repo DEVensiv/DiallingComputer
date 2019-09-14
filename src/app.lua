@@ -113,11 +113,11 @@ end
 updateTerminateBtn()
 
 -- autoclose field
-local autoClose = AddressField.new(4, 43, 34, 5, "10 seconds", CYAN, TEXT_WHITE, BACKGROUND)
-autoClose:draw()
+--local autoClose = AddressField.new(4, 43, 34, 5, "10 seconds", CYAN, TEXT_WHITE, BACKGROUND)
+--autoClose:draw()
 
 -- configuration button
-local configBtn = Button.new(4, 43+3, 34, 3, "GDO CONFIGURATION", CYAN, TEXT_WHITE)
+local configBtn = Button.new(4, 43, 34, 3, "CONFIG", CYAN, TEXT_WHITE)
 configBtn:draw()
 
 -- IDC field
