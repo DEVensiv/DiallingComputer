@@ -239,6 +239,7 @@ while run do
   if autocloseFld:clicked(x,y) then
     autocloseFld:clear()
     autocloseFld:readInput()
+    print(autocloseFld.raw)
   end
 
   -- dial button
@@ -249,8 +250,8 @@ while run do
       _, lastErr = stargate.dial(addressFld.address)
       t = thread.create(function()
           thread.current():suspend()
-          print(autocloseFld.address)
-          os.sleep(tonumber(autocloseFld.address))
+          print(autocloseFld.raw)
+          os.sleep(tonumber(autocloseFld.raw))
           print("disconnect")
           if (gateState == "Connected" and direction == "Outgoing") or gateState == "Dialling" then
             -- terminate connection

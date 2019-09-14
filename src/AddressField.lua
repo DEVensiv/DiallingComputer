@@ -16,6 +16,7 @@ function AddressField:init(x, y, w, h, text, bg, fg, textBg)
   self.fg = fg
   self.textBg = textBg
   self.address = ""
+  self.raw = ""
   self.locked = false
 end
 
@@ -51,6 +52,7 @@ end
 
 function AddressField:clear()
    self.text = ""
+   self.raw = ""
    self:draw()
 end
 
@@ -67,9 +69,11 @@ function AddressField:readInput()
     if key >= 48 and key <= 57 then
       addrString = addrString .. string.char(key)
       address = address .. string.char(key)
+      self.raw = self.raw .. string.char(key)
     elseif key >= 97 and key <= 122 then
       addrString = addrString .. string.char(key - 32)
       address = address .. string.char(key - 32)
+      self.raw = self.raw .. string.char(key - 32)
     end
     
     -- separators
