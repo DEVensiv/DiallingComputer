@@ -247,10 +247,10 @@ while run do
     dialBtn:setBackground(CYAN_LIGHT)
     if string.len(addressFld.address) >= 7 then
       _, lastErr = stargate.dial(addressFld.address)
-      t = thread.create(function(time)
+      t = thread.create(function()
           thread.current():suspend()
-          print(time)
-          os.sleep(time)
+          print(tonumber(autocloseFld.address))
+          os.sleep(tonumber(autocloseFld.address))
           print("disconnection")
           if (gateState == "Connected" and direction == "Outgoing") or gateState == "Dialling" then
             -- terminate connection
@@ -262,7 +262,7 @@ while run do
               graphics.drawChevron(i, " ", BACKGROUND)
             end
           end
-        end, tonumber(autocloseFld.address))
+        end)
     end
   end
   
