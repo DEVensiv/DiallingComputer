@@ -251,7 +251,7 @@ while run do
           thread.current():suspend()
           print(tonumber(autocloseFld.address))
           os.sleep(tonumber(autocloseFld.address))
-          print("disconnection")
+          print("disconnect")
           if (gateState == "Connected" and direction == "Outgoing") or gateState == "Dialling" then
             -- terminate connection
             terminateBtn:setBackground(RED_BRIGHT)
