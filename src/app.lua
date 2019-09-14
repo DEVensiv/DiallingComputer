@@ -3,6 +3,7 @@ local app = {}
 local component = require("component")
 local term = require("term")
 local event = require("event")
+local thread = require("thread")
 
 function app.run()
 
@@ -113,11 +114,11 @@ end
 updateTerminateBtn()
 
 -- autoclose field
-local autocloseFld = AddressField.new(4, 39, 34, 5, "ENTER ADDRESS", CYAN, TEXT_WHITE, BACKGROUND)
+local autocloseFld = AddressField.new(4, 39, 34, 5, "10", CYAN, TEXT_WHITE, BACKGROUND)
 autocloseFld:draw()
 
 -- configuration button
-local configBtn = Button.new(4, 39 + 6, 34, 3, "CONFIG", CYAN, TEXT_WHITE)
+local configBtn = Button.new(4, 39 + 6, 34, 3, "CONFIG GDO", CYAN, TEXT_WHITE)
 configBtn:draw()
 
 -- IDC field
@@ -229,12 +230,31 @@ while run do
     addressFld:readInput()
   end
   
+  -- autoclose field
+  if autocloseFld:clicked(x,y) then
+    autocloseFld:clear()
+    autocloseFld:readInput()
+  end
+
   -- dial button
   updateDialBtn()
   if dialBtn:clicked(x, y) then
     dialBtn:setBackground(CYAN_LIGHT)
     if string.len(addressFld.address) >= 7 then
       _, lastErr = stargate.dial(addressFld.address)
+      thread.create(function(time)
+          os.sleep(time)
+          if (gateState == "Connected" and direction == "Outgoing") or gateState == "Dialling" then
+            -- terminate connection
+            terminateBtn:setBackground(RED_BRIGHT)
+            stargate.disconnect()
+            
+            -- clear chevrons (closing state is skipped when terminating during dial)
+            for i = 1, 9 do
+              graphics.drawChevron(i, " ", BACKGROUND)
+            end
+          end
+        end, tonumber(autocloseFld.address))
     end
   end
   
