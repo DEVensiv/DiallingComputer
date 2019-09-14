@@ -154,7 +154,6 @@ while run do
   elseif gateState == "Connected" then
     if t ~= nil then
       t:resume()
-      print("thread resumed")
     end
     
     if irisState == "Closed" then
@@ -250,7 +249,9 @@ while run do
       _, lastErr = stargate.dial(addressFld.address)
       t = thread.create(function(time)
           thread.current():suspend()
+          print(time)
           os.sleep(time)
+          print("disconnection")
           if (gateState == "Connected" and direction == "Outgoing") or gateState == "Dialling" then
             -- terminate connection
             terminateBtn:setBackground(RED_BRIGHT)
