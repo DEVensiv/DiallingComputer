@@ -494,42 +494,36 @@ end
 
 function graphics.drawLocalGateInfo(x, y, address, energy, iris, err)
   gpu.setBackground(CYAN)
-  gpu.fill(x, y, 34, 11+2, " ")
+  gpu.fill(x, y, 34, 13, " ")
   gpu.setBackground(BACKGROUND)
-  gpu.fill(x+1, y+3, 32, 7+2, " ")
+  gpu.fill(x+1, y+3, 32, 16, " ")
   gpu.setBackground(CYAN)
   gpu.setForeground(TEXT_WHITE)
   gpu.set(x + 17 - string.len("LOCAL GATE DATA")/2, y+1, "LOCAL GATE DATA")
   gpu.setBackground(BACKGROUND)
   
-  if address == nil then
-    gpu.set(x+2, y+4, "ADDRESS: UNKNOWN")
-  else
-    gpu.set(x+2, y+4, "ADDRESS: " .. address)
-  end
-  
   if energy == nil then
-    gpu.set(x+2, y+6, "AVAILABLE ENERGY: N/A")
+    gpu.set(x+2, y+2, "AVAILABLE ENERGY: N/A")
   else
-    gpu.set(x+2, y+6, "AVAILABLE ENERGY: " .. math.floor(energy + 0.5))
+    gpu.set(x+2, y+2, "AVAILABLE ENERGY: " .. math.floor(energy + 0.5))
   end
   
   if iris == nil then
-    gpu.set(x+2, y+8, "IRIS STATE: UNKNOWN")
+    gpu.set(x+2, y+2, "IRIS STATE: UNKNOWN")
   else
-    gpu.set(x+2, y+8, "IRIS STATE: " .. iris)
+    gpu.set(x+2, y+2, "IRIS STATE: " .. iris)
   end
   
-  gpu.set(x+2, y+10, "LAST DIALLING ERROR:")
-  gpu.fill(x+2, y+11, 31, 5, " ")
+  gpu.set(x+2, y+8, "LAST DIALLING ERROR:")
+  gpu.fill(x+2, y+9, 31, 5, " ")
   if err == nil then
     gpu.setForeground(GREEN)
-    gpu.set(x+2, y+12, "None")
+    gpu.set(x+2, y+10, "None")
   else
     gpu.setForeground(RED_DARK)
     local j = 0
     for i=1, #err, 30 do
-        gpu.set(x+2, y+12+j, err:sub(i,i+29))
+        gpu.set(x+2, y+10+j, err:sub(i,i+29))
         j = j + 1
     end
     
