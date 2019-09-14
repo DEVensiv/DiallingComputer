@@ -113,11 +113,11 @@ end
 updateTerminateBtn()
 
 -- autoclose field
-local autocloseFld = AddressField.new(4, 43, 34, 5, "ENTER ADDRESS", CYAN, TEXT_WHITE, BACKGROUND)
+local autocloseFld = AddressField.new(4, 39, 34, 5, "ENTER ADDRESS", CYAN, TEXT_WHITE, BACKGROUND)
 autocloseFld:draw()
 
 -- configuration button
-local configBtn = Button.new(4, 43 + 5, 34, 3, "CONFIG", CYAN, TEXT_WHITE)
+local configBtn = Button.new(4, 39 + 6, 34, 3, "CONFIG", CYAN, TEXT_WHITE)
 configBtn:draw()
 
 -- IDC field
