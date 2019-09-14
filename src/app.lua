@@ -113,7 +113,7 @@ end
 updateTerminateBtn()
 
 -- autoclose field
-local autoClose = AddressField.new(4,43-5, 34, 5, "10", CYAN, TEXT_WHITE, BACKGROUND)
+local autoClose = AddressField.new(4, 43, 34, 5, "10 seconds", CYAN, TEXT_WHITE, BACKGROUND)
 autoClose:draw()
 
 -- configuration button
