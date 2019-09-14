@@ -239,7 +239,6 @@ while run do
   if autocloseFld:clicked(x,y) then
     autocloseFld:clear()
     autocloseFld:readInput()
-    print(autocloseFld.raw)
   end
 
   -- dial button
@@ -252,17 +251,14 @@ while run do
           thread.current():suspend()
           print(autocloseFld.raw)
           os.sleep(tonumber(autocloseFld.raw))
-          print("disconnect")
-          if (gateState == "Connected" and direction == "Outgoing") or gateState == "Dialling" then
-            -- terminate connection
-            terminateBtn:setBackground(RED_BRIGHT)
-            stargate.disconnect()
-            
-            -- clear chevrons (closing state is skipped when terminating during dial)
-            for i = 1, 9 do
-              graphics.drawChevron(i, " ", BACKGROUND)
-            end
-          end
+          -- terminate connection
+          print("disconnecting")
+          stargate.disconnect()
+          print("disconnected")
+          -- clear chevrons (closing state is skipped when terminating during dial)
+          for i = 1, 9 do
+            graphics.drawChevron(i, " ", BACKGROUND)
+          end       
         end)
     end
   end

@@ -16,7 +16,7 @@ function AddressField:init(x, y, w, h, text, bg, fg, textBg)
   self.fg = fg
   self.textBg = textBg
   self.address = ""
-  self.raw = ""
+  self.raw = text
   self.locked = false
 end
 
