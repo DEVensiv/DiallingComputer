@@ -494,9 +494,9 @@ end
 
 function graphics.drawLocalGateInfo(x, y, address, energy, iris, err)
   gpu.setBackground(CYAN)
-  gpu.fill(x, y, 34, 11+7, " ")
+  gpu.fill(x, y, 27, 11+7, " ")
   gpu.setBackground(BACKGROUND)
-  gpu.fill(x+1, y+3, 32, 7+7, " ")
+  gpu.fill(x+1, y+3, 25, 7+7, " ")
   gpu.setBackground(CYAN)
   gpu.setForeground(TEXT_WHITE)
   gpu.set(x + 17 - string.len("LOCAL GATE DATA")/2, y+1, "LOCAL GATE DATA")
