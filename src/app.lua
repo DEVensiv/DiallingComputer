@@ -112,6 +112,10 @@ function updateTerminateBtn()
 end
 updateTerminateBtn()
 
+-- autoclose field
+local autoClose = new AddressField(4,43-5, 5, "10", CYAN, TEXT_WHITE, BACKGROUND)
+autoClose:draw()
+
 -- configuration button
 local configBtn = Button.new(4, 43+3, 34, 3, "GDO CONFIGURATION", CYAN, TEXT_WHITE)
 configBtn:draw()
