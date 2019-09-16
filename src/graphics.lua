@@ -488,7 +488,7 @@ function graphics.drawRemoteInfo(x, y, address, energy)
   if energy == nil then
     gpu.set(x+2, y+4, "ENERGY TO DIAL: N/A")
   else
-    gpu.set(x+2, y+4, "ENERGY TO DIAL: " .. math.floor(energy + 0.5))
+    gpu.set(x+2, y+4, "ENERGY TO DIAL: " .. string.format("%e", math.floor(energy + 0.5)))
   end
   
 end
@@ -506,7 +506,7 @@ function graphics.drawLocalGateInfo(x, y, address, energy, iris, err)
   if energy == nil then
     gpu.set(x+2, y+3, "AVAILABLE ENERGY: N/A")
   else
-    gpu.set(x+2, y+3, "AVAILABLE ENERGY: " .. math.floor(energy + 0.5))
+    gpu.set(x+2, y+3, "AVAILABLE ENERGY: " .. string.format("%e", math.floor(energy + 0.5)))
   end
   
   if iris == nil then
